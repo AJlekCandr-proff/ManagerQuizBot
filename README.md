@@ -1,11 +1,11 @@
 # Проект Вязникова Александра. AIOgram 3.
 ## Демонстрационная работа.
 
-### Разработка.
+## Разработка.
 
-#### Git и GitHub.
+### Git и GitHub.
 
-#### Создание commit-ов.
+### Создание commit-ов.
 
 Пример commit:  `refactor: renaming a variable`
 
