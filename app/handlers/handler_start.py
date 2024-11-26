@@ -3,6 +3,7 @@ from aiogram.types import Message
 from aiogram.filters import CommandStart
 
 from ..keyboards.keyboards import main_menu
+from ..configuration.settings import views
 
 
 router = Router(name=__name__)
@@ -17,4 +18,4 @@ async def handler_start(message: Message) -> None:
     :param message: Объект класса Message.
     """
 
-    await message.answer(text='Привет! Добро пожаловать в викторину.', reply_markup=main_menu())
+    await message.answer(text=views.get('start_view'), reply_markup=main_menu())

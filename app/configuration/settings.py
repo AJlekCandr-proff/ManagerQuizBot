@@ -9,6 +9,8 @@ from aiogram.client.default import DefaultBotProperties
 
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
+from ..utils.read_yaml import read_views
+
 
 class Settings(BaseSettings):
     telegram_bot_api_token: SecretStr
@@ -27,3 +29,5 @@ logger_quiz = logger
 async_engine = create_async_engine(url=settings.data_base_url.unicode_string())
 
 async_session_maker = async_sessionmaker(bind=async_engine, expire_on_commit=False)
+
+views = read_views()
