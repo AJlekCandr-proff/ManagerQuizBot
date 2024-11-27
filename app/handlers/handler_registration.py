@@ -7,7 +7,7 @@ from ..filters.filters_registation import RegistrationFilter, EnterName, CheckMe
 from ..utils.states_form import States
 from ..keyboards.keyboards import categories_menu, main_menu
 from ..database.CRUDs.add_user import add_user
-from ..validation.user_validation import NewUser
+from ..validation.user_validation import PupilProfile
 
 
 router = Router(name=__name__)
@@ -62,7 +62,7 @@ async def handler_choice_category(message: Message, state: FSMContext) -> None:
     name = user_name.split(' ')[0]
     surname = user_name.split(' ')[1]
 
-    user = NewUser(telegram_id=message.from_user.id, name=name, surname=surname, category=message.text)
+    user = PupilProfile(telegram_id=message.from_user.id, name=name, surname=surname, category=message.text)
 
     await add_user(user)
 

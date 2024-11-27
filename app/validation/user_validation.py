@@ -1,9 +1,9 @@
-from pydantic import BaseModel, PositiveInt
+from pydantic import BaseModel, NonNegativeInt, PositiveInt
 
 
-class NewUser(BaseModel):
+class PupilProfile(BaseModel):
     telegram_id: PositiveInt
     name: str
     surname: str
     category: str
-    points: PositiveInt = 0
+    points: NonNegativeInt = 0
