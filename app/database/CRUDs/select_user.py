@@ -23,13 +23,16 @@ async def select_user(value: int) -> PupilProfile | None:
             user = await session.execute(query)
             user = user.scalar()
 
-            return PupilProfile(
-                telegram_id=user.telegram_id,
-                name=user.name,
-                surname=user.surname,
-                category=user.category,
-                points=user.points
-            )
+            if user:
+                return PupilProfile(
+                    telegram_id=user.telegram_id,
+                    name=user.name,
+                    surname=user.surname,
+                    category=user.category,
+                    points=user.points
+                )
+            else:
+                return logger_quiz.error(f'Ошибка при извлечении профиля пользователя: Такого профиля не существует!')
 
     except (ValueError, ValidationError):
-        return logger_quiz.error(f'Ошибка при извлечении профиля пользователя: Такого профиля не существует!')
+        return logger_quiz.error(f'Ошибка при валидации данных профиля пользователя {value}')
