@@ -7,6 +7,12 @@ from app import router as router_root_project
 
 
 async def start(bot: Bot) -> None:
+    """
+    Главная асинхронная функция запуска программы.
+
+    :param bot: Объект класса Bot.
+    """
+
     dp = Dispatcher()
     dp.include_router(router_root_project)
 
