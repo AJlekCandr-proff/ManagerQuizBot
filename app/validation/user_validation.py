@@ -6,4 +6,4 @@ class NewUser(BaseModel):
     name: str
     surname: str
     category: str
-    points: PositiveInt
+    points: PositiveInt = 0

@@ -10,7 +10,7 @@ from app.validation.user_validation import NewUser
 async def add_user(values: NewUser) -> None:
     try:
         async with async_session() as session:
-            query = insert(Profiles).values(values)
+            query = insert(Profiles).values(values.model_dump())
 
             await session.execute(query)
 

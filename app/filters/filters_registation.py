@@ -2,6 +2,10 @@ from re import fullmatch
 
 from aiogram.filters import Filter
 from aiogram.types import Message
+from aiogram.fsm.context import FSMContext
+
+from ..configuration.settings import views
+from ..utils.states_form import States
 
 
 class RegistrationFilter(Filter):
@@ -10,8 +14,32 @@ class RegistrationFilter(Filter):
             return message
 
 
-class EnterName(Filter):
-    async def __call__(self, message: Message) -> Message | None:
+class CheckMessage(Filter):
+    async def __call__(self, message: Message, state: FSMContext) -> Message | None:
         if message.text:
-            if fullmatch(r'^[А-Яа-я]+\s+[А-Яа-я]+$', message.text):
-                return message
+            return Message
+
+        else:
+            await message.answer(text=views.get('error_text'))
+
+
+class EnterName(Filter):
+    async def __call__(self, message: Message, state: FSMContext) -> Message | None:
+        if fullmatch(r'^[А-Яа-я]+\s+[А-Яа-я]+$', message.text):
+            return message
+
+        else:
+            await state.set_state(States.get_name)
+
+
+class ChoiceCategory(Filter):
+    async def __call__(self, message: Message, state: FSMContext) -> Message | None:
+        if message.text in [
+            'Младшая школа (1-4 классы) 🎒',
+            'Средняя школа (5-9 классы) 🏫',
+            'Старшая школа (10-11 классы) 🎓'
+        ]:
+            return message
+
+        else:
+            await state.set_state(States.get_category)
