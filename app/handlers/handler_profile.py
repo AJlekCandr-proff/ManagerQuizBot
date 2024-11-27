@@ -3,6 +3,7 @@ from aiogram.types import Message
 
 from ..middlewares.registered_middleware import UserRegisteredMiddleware
 from ..filters.filters_profile import ProfileFilter
+from ..database.CRUDs.select_user import select_user
 
 
 router = Router(name=__name__)
@@ -19,8 +20,13 @@ async def handler_profile(message: Message) -> None:
     :param message: Объект класса Message.
     """
 
+    user = await select_user(message.from_user.id)
+
     await message.answer(
         text=f""" 
-{message.from_user.first_name}, вот твой профиль 🧩\n\n
-        """
+{message.from_user.first_name}, вот твой профиль 🧩\n
+🆔 <u>{user.telegram_id}</u>
+🎓 {user.name} {user.surname}
+📚 <b>Категория:</b> {user.category}
+🏅 <b>Баллы:</b> <code>{user.points}</code>\n\n """
     )
