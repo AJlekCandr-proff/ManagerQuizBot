@@ -1,4 +1,3 @@
-from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from aiogram.filters import Filter
 
@@ -15,7 +14,7 @@ class AdminFilter(Filter):
 
 
 class CheckMessage(Filter):
-    async def __call__(self, message: Message, state: FSMContext) -> Message | None:
+    async def __call__(self, message: Message) -> Message | None:
         if message.text:
             return Message
 
