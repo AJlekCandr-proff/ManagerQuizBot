@@ -2,11 +2,12 @@ from aiogram import Router
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
 
-from app.keyboards.inline_keyboards import inline_menu_categories, menu_cancel
+from app.keyboards.inline_keyboards import inline_menu_categories, menu_cancel, inline_menu_points
 from app.filters.filters_basic import AdminFilter
 from app.filters.filters_admin import AdditionFilter
 from app.configuration.settings import views
 from app.utils.states_form import StatesAdmin
+from app.callbacks.menu_callbacks import MenuPoints, ChoicePoints
 
 
 router = Router(name=__name__)
@@ -66,6 +67,36 @@ async def handler_enter_question(message: Message, state: FSMContext) -> None:
     :param state: Объект класса FSMContext.
     """
 
-    await message.answer(text=views.get('settings_choice_points_view'), reply_markup=menu_cancel())
+    await message.answer(text=views.get('settings_choice_points_view'), reply_markup=inline_menu_points())
 
     await state.set_state(StatesAdmin.choice_points)
+
+
+@router.callback_query(StatesAdmin.choice_points, MenuPoints.filter())
+async def handler_change_point(callback: CallbackQuery, state: FSMContext, callback_data: MenuPoints) -> None:
+    """
+    Асинхронный обработчик изменения баллов за правильный ответ на вопрос/задание.
+
+    :param callback: Объект класса CallbackQuery.
+    :param state: Объект класса FSMContext.
+    :param callback_data: Объект класса MenuPoints.
+    """
+
+    await callback.message.edit_text(text=views.get('settings_choice_points_view'), reply_markup=inline_menu_points(callback_data.points))
+
+    await state.set_state(StatesAdmin.choice_points)
+
+
+@router.callback_query(StatesAdmin.choice_points, ChoicePoints.filter())
+async def handler_choice_point(callback: CallbackQuery, state: FSMContext, callback_data: ChoicePoints) -> None:
+    """
+    Асинхронный обработчик выбора баллов за правильный ответ на вопрос/задание.
+
+    :param callback: Объект класса CallbackQuery.
+    :param state: Объект класса FSMContext.
+    :param callback_data: Объект класса ChoicePoints.
+    """
+
+    await callback.message.answer(text=views.get(''))
+
+    await state.set_state()

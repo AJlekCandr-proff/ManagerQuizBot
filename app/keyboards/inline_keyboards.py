@@ -55,6 +55,24 @@ def inline_menu_categories() -> InlineKeyboardMarkup:
     return inline_builder.adjust(1).as_markup()
 
 
+def inline_menu_points(points: int = 5) -> InlineKeyboardMarkup:
+    """
+    Функция создания inline-клавиатуры для выбора баллов.
+
+    :return: Объект класса InlineKeyboardMarkup.
+    """
+
+    inline_keyboard_builder = InlineKeyboardBuilder()
+
+    inline_keyboard_builder.row(
+        InlineKeyboardButton(text='+', callback_data=f'points:{points+1}'),
+        InlineKeyboardButton(text=f'{points}', callback_data=f'result:{points}'),
+        InlineKeyboardButton(text='-', callback_data=f'points:{points-1}')
+    )
+
+    return inline_keyboard_builder.as_markup()
+
+
 def menu_cancel() -> InlineKeyboardMarkup:
     """
     Функция создания inline-клавиатуры для отмены процесса.
