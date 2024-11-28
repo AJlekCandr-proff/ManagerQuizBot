@@ -34,3 +34,36 @@ def inline_menu_settings() -> InlineKeyboardMarkup:
     )
 
     return inline_builder.adjust(1).as_markup()
+
+
+def inline_menu_categories() -> InlineKeyboardMarkup:
+    """
+    Функция создания inline-клавиатуры для выбора категории (школы).
+
+    :return: Объект класса InlineKeyboardMarkup.
+    """
+
+    inline_builder = InlineKeyboardBuilder()
+
+    inline_builder.add(
+        InlineKeyboardButton(text='Младшая школа (1-4 классы) 🎒', callback_data='Младшая школа (1-4 классы) 🎒'),
+        InlineKeyboardButton(text='Средняя школа (5-9 классы) 🏫', callback_data='Средняя школа (5-9 классы) 🏫'),
+        InlineKeyboardButton(text='Старшая школа (10-11 классы) 🎓', callback_data='Старшая школа (10-11 классы) 🎓'),
+        InlineKeyboardButton(text='Отмена ❌', callback_data='addition_cancel')
+    )
+
+    return inline_builder.adjust(1).as_markup()
+
+
+def menu_cancel() -> InlineKeyboardMarkup:
+    """
+    Функция создания inline-клавиатуры для отмены процесса.
+
+    :return: Объект класса InlineKeyboardMarkup.
+    """
+
+    inline_keyboard_builder = InlineKeyboardBuilder()
+
+    inline_keyboard_builder.add(InlineKeyboardButton(text='Отмена ❌', callback_data='addition_cancel'))
+
+    return inline_keyboard_builder.as_markup()
