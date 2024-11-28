@@ -5,6 +5,7 @@ from ..filters.filters_tasks import TasksFilter
 from ..configuration.settings import views
 from ..middlewares.is_registered_middleware import UserRegisteredMiddleware
 from ..database.CRUDs.select_user import select_user
+from ..keyboards.inline_keyboards import menu_tasks
 
 
 router = Router(name=__name__)
@@ -28,4 +29,5 @@ async def handler_tasks(message: Message) -> None:
         text=f"{user.name}, {views.get('tasks_view')}\n "
              f"<b>Твоя категория:</b> {user.category}\n"
              f"<b>🏅 Твои баллы:</b> <code>{user.points}</code>",
+        reply_markup=menu_tasks([])
     )
