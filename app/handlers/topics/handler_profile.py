@@ -1,9 +1,9 @@
 from aiogram import Router
 from aiogram.types import Message
 
-from ..middlewares.is_registered_middleware import UserRegisteredMiddleware
-from ..filters.filters_profile import ProfileFilter
-from ..database.CRUDs.select_user import select_user
+from app.middlewares.is_registered_middleware import UserRegisteredMiddleware
+from app.filters.filters_profile import ProfileFilter
+from app.database.CRUDs.select_user import select_user
 
 
 router = Router(name=__name__)

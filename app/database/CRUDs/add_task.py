@@ -21,5 +21,7 @@ async def add_tasks(values: Task) -> None:
 
             await session.commit()
 
+            return logger_quiz.info(f'Новое задание "{values.title}" было успешно добавлено в базу данных!')
+
     except (ValueError, ValidationError):
         return logger_quiz.error('Ошибка в валидации данных при добавлении нового задания в базу данных!')

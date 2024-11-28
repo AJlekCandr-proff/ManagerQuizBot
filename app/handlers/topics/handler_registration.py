@@ -2,13 +2,13 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from ..configuration.settings import views
-from ..filters.filters_registation import RegistrationFilter, EnterName, CheckMessage, ChoiceCategory
-from ..utils.states_form import States
-from ..keyboards.keyboards import categories_menu, main_menu
-from ..database.CRUDs.add_user import add_user
-from ..validation.user_validation import PupilProfile
-from ..middlewares.is_not_registered_middleware import UserNotRegisteredMiddleware
+from app.configuration.settings import views
+from app.filters.filters_registation import RegistrationFilter, EnterName, CheckMessage, ChoiceCategory
+from app.utils.states_form import States
+from app.keyboards.keyboards import categories_menu, main_menu
+from app.database.CRUDs.add_user import add_user
+from app.validation.user_validation import PupilProfile
+from app.middlewares.is_not_registered_middleware import UserNotRegisteredMiddleware
 
 
 router = Router(name=__name__)

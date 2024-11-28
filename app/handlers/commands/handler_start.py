@@ -2,8 +2,8 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 
-from ..keyboards.keyboards import main_menu
-from ..configuration.settings import views
+from app.keyboards.keyboards import main_menu
+from app.configuration.settings import views
 
 
 router = Router(name=__name__)

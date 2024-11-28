@@ -1,11 +1,11 @@
 from aiogram import Router
 from aiogram.types import Message
 
-from ..filters.filters_tasks import TasksFilter
-from ..configuration.settings import views
-from ..middlewares.is_registered_middleware import UserRegisteredMiddleware
-from ..database.CRUDs.select_user import select_user
-from ..keyboards.inline_keyboards import menu_tasks
+from app.filters.filters_tasks import TasksFilter
+from app.configuration.settings import views
+from app.middlewares.is_registered_middleware import UserRegisteredMiddleware
+from app.database.CRUDs.select_user import select_user
+from app.keyboards.inline_keyboards import menu_tasks
 
 
 router = Router(name=__name__)
