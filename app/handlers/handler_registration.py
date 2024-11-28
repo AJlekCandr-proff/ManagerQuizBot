@@ -8,9 +8,12 @@ from ..utils.states_form import States
 from ..keyboards.keyboards import categories_menu, main_menu
 from ..database.CRUDs.add_user import add_user
 from ..validation.user_validation import PupilProfile
+from ..middlewares.is_not_registered_middleware import UserNotRegisteredMiddleware
 
 
 router = Router(name=__name__)
+
+router.message.middleware(UserNotRegisteredMiddleware())
 
 
 @router.message(RegistrationFilter())
