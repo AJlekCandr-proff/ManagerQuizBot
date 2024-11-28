@@ -8,7 +8,7 @@ from app.filters.filters_admin import AdditionFilter
 router = Router(name=__name__)
 
 
-@router.message(AdditionFilter(), AdminFilter())
+@router.callback_query(AdditionFilter(), AdminFilter())
 async def handler_addition_task(callback: CallbackQuery) -> None:
     await callback.message.edit_text(text='🏫 Выбери категорию:')
 
