@@ -1,7 +1,7 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton, InlineKeyboardMarkup
 
 
-def menu_tasks(list_tasks: list[tuple[str, int]]) -> InlineKeyboardMarkup:
+def inline_menu_tasks(list_tasks: list[tuple[str, int]]) -> InlineKeyboardMarkup:
     """
     Функция создания inline-клавиатуры с доступными заданиями.
 
@@ -18,7 +18,7 @@ def menu_tasks(list_tasks: list[tuple[str, int]]) -> InlineKeyboardMarkup:
     return inline_builder.adjust(1).as_markup()
 
 
-def menu_settings() -> InlineKeyboardMarkup:
+def inline_menu_settings() -> InlineKeyboardMarkup:
     """
     Функция создания inline-клавиатуры для панели настроек всей программы.
 

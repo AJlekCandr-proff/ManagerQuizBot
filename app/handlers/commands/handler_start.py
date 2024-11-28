@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 
-from app.keyboards.keyboards import main_menu
+from app.keyboards.keyboards import menu_main
 from app.configuration.settings import views
 
 
@@ -18,4 +18,4 @@ async def handler_start(message: Message) -> None:
     :param message: Объект класса Message.
     """
 
-    await message.answer(text=views.get('start_view'), reply_markup=main_menu())
+    await message.answer(text=views.get('start_view'), reply_markup=menu_main())

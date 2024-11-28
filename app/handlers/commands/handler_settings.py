@@ -4,7 +4,7 @@ from aiogram.filters import Command
 
 from app.filters.filters_basic import AdminFilter
 from app.configuration.settings import views
-from app.keyboards.inline_keyboards import menu_settings
+from app.keyboards.inline_keyboards import inline_menu_settings
 
 
 router = Router(name=__name__)
@@ -19,4 +19,4 @@ async def handler_settings(message: Message) -> None:
     :param message: Объект класса Message.
     """
 
-    await message.answer(text=views.get('panel_settings_view'), reply_markup=menu_settings())
+    await message.answer(text=views.get('panel_settings_view'), reply_markup=inline_menu_settings())

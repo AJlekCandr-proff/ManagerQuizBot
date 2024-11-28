@@ -1,7 +1,7 @@
 from aiogram.utils.keyboard import ReplyKeyboardMarkup, ReplyKeyboardBuilder, KeyboardButton
 
 
-def main_menu() -> ReplyKeyboardMarkup:
+def menu_main() -> ReplyKeyboardMarkup:
     """
     Функция создания клавиатуры для главного меню пользователя.
 
@@ -16,7 +16,7 @@ def main_menu() -> ReplyKeyboardMarkup:
     return keyboard_builder.as_markup(resize_keyboard=True)
 
 
-def categories_menu() -> ReplyKeyboardMarkup:
+def menu_categories() -> ReplyKeyboardMarkup:
     """
     Функция создания клавиатуры для выбора школы (Младшей, средней или старшей) пользователем.
 
@@ -25,8 +25,10 @@ def categories_menu() -> ReplyKeyboardMarkup:
 
     keyboard_builder = ReplyKeyboardBuilder()
 
-    keyboard_builder.row(KeyboardButton(text='Младшая школа (1-4 классы) 🎒'))
-    keyboard_builder.row(KeyboardButton(text='Средняя школа (5-9 классы) 🏫'))
-    keyboard_builder.row(KeyboardButton(text='Старшая школа (10-11 классы) 🎓'))
+    keyboard_builder.add(
+        KeyboardButton(text='Младшая школа (1-4 классы) 🎒'),
+        KeyboardButton(text='Средняя школа (5-9 классы) 🏫'),
+        KeyboardButton(text='Старшая школа (10-11 классы) 🎓')
+    )
 
-    return keyboard_builder.as_markup(resize_keyboard=True)
+    return keyboard_builder.adjust(1).as_markup(resize_keyboard=True)

@@ -6,7 +6,7 @@ from app.configuration.settings import views
 from app.filters.filters_registation import RegistrationFilter, EnterName, ChoiceCategory
 from app.filters.filters_basic import CheckMessage
 from app.utils.states_form import States
-from app.keyboards.keyboards import categories_menu, main_menu
+from app.keyboards.keyboards import menu_categories, menu_main
 from app.database.CRUDs.add_user import add_user
 from app.validation.user_validation import PupilProfile
 from app.middlewares.is_not_registered_middleware import UserNotRegisteredMiddleware
@@ -43,7 +43,7 @@ async def handler_get_name(message: Message, state: FSMContext) -> None:
     :param state: Объект класса FSMContext.
     """
 
-    await message.answer(text=views.get('choice_category'), reply_markup=categories_menu())
+    await message.answer(text=views.get('choice_category'), reply_markup=menu_categories())
 
     await state.update_data(name=message.text)
 
@@ -70,6 +70,6 @@ async def handler_choice_category(message: Message, state: FSMContext) -> None:
 
     await add_user(user)
 
-    await message.answer(text=views.get('finally_registration'), reply_markup=main_menu())
+    await message.answer(text=views.get('finally_registration'), reply_markup=menu_main())
 
     await state.clear()
