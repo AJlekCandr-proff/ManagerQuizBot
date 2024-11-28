@@ -1,6 +1,6 @@
 from loguru import logger
 
-from pydantic import SecretStr, PostgresDsn
+from pydantic import SecretStr, PostgresDsn, PositiveInt
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -14,6 +14,8 @@ from ..utils.read_yaml import read_views
 
 class Settings(BaseSettings):
     telegram_bot_api_token: SecretStr
+    telegram_id_admin: PositiveInt
+
     data_base_url: PostgresDsn
 
     model_config = SettingsConfigDict(env_file='.env')

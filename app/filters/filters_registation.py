@@ -4,7 +4,6 @@ from aiogram.filters import Filter
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from ..configuration.settings import views
 from ..utils.states_form import States
 
 
@@ -12,15 +11,6 @@ class RegistrationFilter(Filter):
     async def __call__(self, message: Message) -> Message | None:
         if message.text == '📝 Регистрация':
             return message
-
-
-class CheckMessage(Filter):
-    async def __call__(self, message: Message, state: FSMContext) -> Message | None:
-        if message.text:
-            return Message
-
-        else:
-            await message.answer(text=views.get('error_text'))
 
 
 class EnterName(Filter):

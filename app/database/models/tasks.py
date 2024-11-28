@@ -10,4 +10,5 @@ class Tasks(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     correct_answer: Mapped[str] = mapped_column(Text, nullable=False)
+    category: Mapped[str] = mapped_column(String, nullable=False)
     gifs_points: Mapped[int] = mapped_column(BigInteger, nullable=False, default=5)

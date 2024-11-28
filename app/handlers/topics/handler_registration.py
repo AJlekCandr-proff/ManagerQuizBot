@@ -3,7 +3,8 @@ from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
 from app.configuration.settings import views
-from app.filters.filters_registation import RegistrationFilter, EnterName, CheckMessage, ChoiceCategory
+from app.filters.filters_registation import RegistrationFilter, EnterName, ChoiceCategory
+from app.filters.filters_basic import CheckMessage
 from app.utils.states_form import States
 from app.keyboards.keyboards import categories_menu, main_menu
 from app.database.CRUDs.add_user import add_user
