@@ -1,6 +1,6 @@
 from aiogram import Router
 
-from .handler_addtion_task import router as router_addition_task
+from .handler_addition_task import router as router_addition_task
 
 
 router = Router(name=__name__)
