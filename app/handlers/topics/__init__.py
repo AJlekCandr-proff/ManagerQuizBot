@@ -1,11 +1,10 @@
 from aiogram import Router
 
-from .handler_registration import router as router_registration
-from .handler_profile import router as router_profile
-from .handler_tasks import router as router_tasks
+from .user import router as router_user
+from .admin import router as router_admin
 
 
 router = Router(name=__name__)
 
 
-router.include_routers(router_registration, router_profile, router_tasks)
+router.include_routers(router_user, router_admin)
