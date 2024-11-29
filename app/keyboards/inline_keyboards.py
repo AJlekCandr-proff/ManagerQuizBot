@@ -70,6 +70,8 @@ def inline_menu_points(points: int = 5) -> InlineKeyboardMarkup:
         InlineKeyboardButton(text='-', callback_data=f'points:{points-1}')
     )
 
+    inline_keyboard_builder.row(InlineKeyboardButton(text=f'Выбрать {points} ⭐️', callback_data=f'choice_points:{points}'))
+
     return inline_keyboard_builder.as_markup()
 
 
